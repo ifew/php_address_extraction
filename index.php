@@ -56,7 +56,7 @@ function extract_zipcode($address_text) {
 
 function extract_house_no($address_text) {
     // $pattern = '/(เลขที่ |เลขที่|บ้านเลขที่ |บ้านเลขที่)([0-9]\S*)/';
-    $pattern = '/(เลขที่ |เลขที่|บ้านเลขที่ |บ้านเลขที่)?([0-9\/ ]+)(ซอย|ซอย |ซ\.|หมู่|หมู่ |หมู่ที่|หมู่ที่ |ม\.|ถนน|ถนน |ถ\.)/';
+    $pattern = '/(เลขที่ |เลขที่|บ้านเลขที่ |บ้านเลขที่)?([0-9\/\- ]+)(ซอย|ซอย |ซ\.|หมู่|หมู่ |หมู่ที่|หมู่ที่ |ม\.|ถนน|ถนน |ถ\.)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
         return $matches[2];
