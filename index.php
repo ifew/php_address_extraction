@@ -151,9 +151,12 @@ function extract_address($address_text) {
     $address_array['village_no'] = extract_village_no($address_text);
     $address_array['soi'] = extract_soi($address_text);
     $address_array['road'] = extract_road($address_text);
-    $address_array['subdistrict'] = extract_subdistrict($address_text);
-    $address_array['district'] = extract_district($address_text);
     $address_array['province'] = extract_province($address_text);
+    $address_array['district'] = extract_district($address_text);
+    if($address_array['district'] == 'เมือง') {
+        $address_array['district'] = 'เมือง'.$address_array['province'];
+    }
+    $address_array['subdistrict'] = extract_subdistrict($address_text);
     $address_array['zipcode'] = extract_zipcode($address_text);
 
     // return explode(" ",$address_text);
