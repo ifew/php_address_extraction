@@ -48,7 +48,7 @@ function extract_zipcode($address_text) {
     $pattern = '/([0-9]{5})/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[0])) {
-        return $matches[0];
+        return trim($matches[0]);
     } else {
         return '';
     }
@@ -59,7 +59,7 @@ function extract_house_no($address_text) {
     $pattern = '/(เลขที่ |เลขที่|บ้านเลขที่ |บ้านเลขที่)?([0-9\/\- ]+)(ซอย|ซอย |ซ\.|หมู่|หมู่ |หมู่ที่|หมู่ที่ |ม\.|ถนน|ถนน |ถ\.)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
-        return $matches[2];
+        return trim($matches[2]);
     } else {
         return '';
     }
@@ -70,7 +70,7 @@ function extract_house_address($address_text) {
     $pattern = '/(.+)(ตำบล|ตำบล |ต\.|ต\. |แขวง|แขวง )(.\S*)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[1])) {
-        return $matches[1];
+        return trim($matches[1]);
     } else {
         return '';
     }
@@ -80,7 +80,7 @@ function extract_soi($address_text) {
     $pattern = '/(ซอย|ซอย |ซ\.)(.* )(ถนน|ถนน |ถ\.)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
-        return $matches[2];
+        return trim($matches[2]);
     } else {
         return '';
     }
@@ -90,7 +90,7 @@ function extract_road($address_text) {
     $pattern = '/(ถนน|ถนน |ถ\.)(.\S*)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
-        return $matches[2];
+        return trim($matches[2]);
     } else {
         return '';
     }
@@ -100,7 +100,7 @@ function extract_village_no($address_text) {
     $pattern = '/(หมู่|หมู่ |หมู่ที่|หมู่ที่ |ม\.)([0-9]\S*)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
-        return $matches[2];
+        return trim($matches[2]);
     } else {
         return '';
     }
@@ -110,7 +110,7 @@ function extract_subdistrict($address_text) {
     $pattern = '/(ตำบล|ตำบล |ต\.|ต\. |แขวง|แขวง )(.\S*)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
-        return $matches[2];
+        return trim($matches[2]);
     } else {
         return '';
     }
@@ -120,7 +120,7 @@ function extract_district($address_text) {
     $pattern = '/(อำเภอ|อำเภอ |อ\.|อ\. |เขต|เขต )(.\S*)/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
-        return $matches[2];
+        return trim($matches[2]);
     } else {
         return '';
     }
@@ -130,12 +130,12 @@ function extract_province($address_text) {
     $pattern = '/(จังหวัด|จ\.)(.\S*)?/';
     preg_match($pattern, $address_text, $matches);
     if(isset($matches[2])) {
-        return $matches[2];
+        return trim($matches[2]);
     } else {
         $pattern_bkk = '/(กรุงเทพมหานครฯ|กรุงเทพมหานคร|กรุงเทพ|กรุงเทพฯ|กทม)/';
         preg_match($pattern_bkk, $address_text, $matches_bkk);
         if(isset($matches_bkk[1])) {
-            return $matches_bkk[1];
+            return trim($matches_bkk[1]);
         } else {
             return '';
         }
